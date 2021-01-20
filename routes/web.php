@@ -29,8 +29,24 @@ Route::get('/register', function () {
 
 Route::post('/user/daftar/electra', 'UserController@daftarElectra')->name('user.daftarElectra');
 Route::post('/user/daftar/baronas', 'UserController@daftarBaronas')->name('user.daftarBaronas');
+Route::post('/user/daftar/baronas-sd', 'UserController@daftarBaronasSd')->name('user.daftarBaronasSd');
+Route::post('/user/daftar/baronas-smp', 'UserController@daftarBaronasSmp')->name('user.daftarBaronasSmp');
+Route::post('/user/daftar/baronas-sma', 'UserController@daftarBaronasSma')->name('user.daftarBaronasSma');
+Route::post('/user/daftar/baronas-umum', 'UserController@daftarBaronasUmum')->name('user.daftarBaronasUmum');
+
+
+
+Route::post('/user/upload-link-baronas', 'UserController@uploadBaronas')->name('user.uploadBaronas');
+Route::post('/user/upload-link-baronas/smp', 'UserController@uploadBaronasSMP')->name('user.uploadBaronasSMP');
+Route::post('/user/upload-link-baronas/sma', 'UserController@uploadBaronasSMA')->name('user.uploadBaronasSMA');
+Route::post('/user/upload-link-baronas/umum', 'UserController@uploadBaronasUmum')->name('user.uploadBaronasUmum');
+
+
+
+
 Route::post('/admin/tambah/', 'UserController@daftarElectraAdmin')->name('user.daftarElectraAdmin');
-Route::post('/user/pembayaran', 'UserController@submitBuktiPembayaran')->name('user.submitBuktiPembayaran');
+Route::post('/user/pembayaran-electra', 'UserController@submitBuktiPembayaranElectra')->name('user.submitBuktiPembayaranElectra');
+Route::post('/user/pembayaran-baronas', 'UserController@submitBuktiPembayaranBaronas')->name('user.submitBuktiPembayaranBaronas');
 
 Route::post('/register', 'UserController@register')->name('user.register');
 Route::post('/login', 'UserController@login')->name('user.login');
@@ -51,16 +67,48 @@ Route::group(['middleware' => 'CheckLogin'], function () {
 
     Route::get('/user/daftar/electra', 'UserController@formElectra');
 
-    Route::get('/user/daftar/baronas', function () {
-        return view('user.form-baronas');
-    });
+    //Route::get('/user/daftar/baronas', function () {
+      //  return view('user.form-baronas');
+   // });
 
-    Route::get('/user/daftar/baronasdua', function () {
-        return view('user.form-baronassementara');
-    });
+  //  Route::get('/user/daftar/baronas', function () {
+  //      return view('user.form-baronassementara');
+  //  });
+
+  //  Route::get('/user/daftar/baronas-sd', function () {
+   //     return view('user.form-baronas-sd');
+  //  });
+
+  //  Route::get('/user/daftar/baronas-smp', function () {
+  //      return view('user.form-baronas-smp');
+  //  });
+
+  //  Route::get('/user/daftar/baronas-sma', function () {
+   //     return view('user.form-baronas-sma');
+  //  });
+
+  //  Route::get('/user/daftar/baronas-umum', function () {
+  //      return view('user.form-baronas-umum');
+  //  });
 
 
-    Route::get('/user/daftar/baronasdua', 'UserController@formBaronas');
+
+
+
+
+
+    Route::get('/user/daftar/baronas', 'UserController@formBaronas');
+    //Route::get('/user/daftar/baronas-sd', 'UserController@formBaronasSd');
+    //Route::get('/user/daftar/baronas-smp', 'UserController@formBaronasSmp');
+    //Route::get('/user/daftar/baronas-sma', 'UserController@formBaronasSma');
+   // Route::get('/user/daftar/baronas-umum', 'UserController@formBaronasUmum');
+
+
+
+
+
+   Route::get('/user/upload-link-baronas', 'UserController@formuploadBaronas');
+
 
 
     Route::get('/user/daftar/evolve', function () {
@@ -79,13 +127,29 @@ Route::group(['middleware' => 'CheckLogin'], function () {
         return view('user.file');
     });
 
-    Route::get('/user/pembayaran', 'UserController@userPembayaran');
+    Route::get('/user/pembayaran-electra', 'UserController@userPembayaranElectra');
+    Route::get('/user/pembayaran-baronas', 'UserController@userPembayaranBaronas');
 
     Route::post('/user/akun', 'UserController@updatePassword')->name('user.updatePassword');
 
-    Route::get('/user/kartu-peserta', 'UserController@kartuPeserta');
+    Route::get('/user/kartu-peserta-electra', 'UserController@kartuPeserta');
 
-    Route::get('/user/kartu-peserta/unduh', 'UserController@unduhKartu');
+    Route::get('/user/kartu-peserta-electra/unduh', 'UserController@unduhKartu');
+
+
+
+    Route::get('/user/kartu-peserta-baronas', 'UserController@kartuPesertaBaronas');
+
+    Route::get('/user/kartu-peserta-baronas/unduh', 'UserController@unduhKartuBaronas');
+
+
+
+    Route::get('/reka', function () {
+        return view('dokumen.invoice-bayangan');
+    });
+
+
+
 
     Route::get('/user/view', function () {
         return view('dokumen.kartu-peserta-layout');
@@ -95,6 +159,10 @@ Route::group(['middleware' => 'CheckLogin'], function () {
     //----------ADMIN ROUTES---------//
 
     Route::get('admin/export/electra', 'UserController@exportElectra');
+    Route::get('admin/export/baronas', 'UserController@exportBaronas');
+
+
+
 
     Route::get('/admin/dashboard', function () {
         return view('admin.dashboard');
@@ -125,6 +193,9 @@ Route::group(['middleware' => 'CheckLogin'], function () {
     Route::get('/admin/list/baronas/delete/{id}', 'UserController@listBaronasDelete');
     Route::get('/admin/list/baronas/konfirmasi/{id}', 'UserController@listBaronasKonfirmasi');
 
+
+    Route::get('/admin/list/baronas/edit/{id}', 'UserController@editBaronas');
+    Route::patch('/admin/list/baronas/edit/{id}', 'UserController@updateBaronas')->name('user.updateBaronas');
 
 
     Route::get('/admin/list/evolve', function () {

@@ -61,16 +61,7 @@
                                             <label class="form-control-label" for="input-name">Nama Tim</label>
                                             <input type="text" id="nama-tim" name = "nama_tim" class="form-control" placeholder="Nama Tim" value="{{ $baronas->nama_tim }}" maxlength="15" {{ $baronas['email']=='' ? '' : 'readOnly' }} >
                                         </div>
-                                        <div class="form-group">
-                                            <label class="form-control-label" for="input-name">Kategori</label>
-                                            <select name="kategori" id="kategori" class="form-control" {{ $baronas['email']=='' ? '' : 'disabled' }} required>
-                                                <option disabled selected value> -- Pilih Kategori -- </option>
-                                                <option value="sd">Sekolah Dasar</option>
-                                                <option value="smp">Sekolah Menengah Pertama</option>
-                                                <option value="sma">Sekolah Menengah Atas</option>
-                                                <option value="umum">Umum</option>
-                                            </select>
-                                        </div>
+
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Nama Ketua</label>
                                             <input type="text" id="nama-ketua" class="form-control" name = "nama_ketua"  placeholder="Nama Lengkap" value="{{ $baronas->nama_ketua }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
@@ -98,16 +89,16 @@
                                             </select>
                                         </div> -->
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-name">Asal Sekolah / Instansi</label>
+                                            <label class="form-control-label" for="input-name">Asal Sekolah</label>
                                             <input name="sekolah" type="text" name = "sekolah" id="sekolah" class="form-control" placeholder="Contoh : SMA Negeri 1 Surabaya" value="{{ $baronas->sekolah }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-name">Alamat Sekolah / Instansi</label>
+                                            <label class="form-control-label" for="input-name">Alamat Sekolah</label>
                                             <input name="alamat_sekolah" type="text" id="alamat-sekolah" class="form-control" placeholder="Contoh : Jalan Wijaya Kusuma No. 48 Surabaya" value="{{ $baronas->alamat_sekolah }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
                                         </div>
                                         <div class="form-group">
-                                            <label class="form-control-label" for="input-name">Nama Pembina ( <span class="red-star" style = "color:red">**</span> Tidak Wajib Diisi <span class="red-star" style = "color:red">**</span> )</label>
+                                            <label class="form-control-label" for="input-name">Nama Pembina</label>
                                             <input name="nama_pembina" type="text" name = "nama_pembina" id="Pembina" class="form-control" placeholder="Nama Lengkap" value="{{ $baronas->nama_pembina }}" {{ $baronas['email']=='' ? '' : 'readOnly' }}>
                                         </div>
                                         <div class="form-group">
@@ -115,13 +106,22 @@
                                             <input name="nomor_hp" type="number" id="nomor-hp" class="form-control" placeholder="Contoh : 08123456789" value="{{ $baronas->nomor_hp }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
                                         </div>
 
+
+
+
+
+
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Unggah Kartu Pelajar Ketua (Format jpg, jpeg)</label>
+                                            <label for="exampleFormControlFile1">Unggah Kartu Pelajar/KTP/KK/Surat Pernyataan (Format
+                                                jpg, jpeg) *contoh surat pernyataan dapat diunduh di : <a href="https://intip.in/suratelectra" target="blank">intip.in/suratelectra</a>
+                                                <br> <br>
+                                                Kartu Identitas Ketua (*Ukuran file maksikum 2MB)
+                                            </label>
                                             <input name="file_ktp_ketua" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $baronas['email']=='' ? '' : 'disabled' }} required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Unggah Kartu Pelajar Anggota (Format jpg, jpeg)</label>
+                                            <label for="exampleFormControlFile1">Unggah Kartu Identitas Anggota (Format jpg, jpeg)</label>
                                             <input name="file_ktp_anggota" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $baronas['email']=='' ? '' : 'disabled' }} required>
                                         </div>
 

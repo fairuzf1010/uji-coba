@@ -43,81 +43,57 @@
                                             <thead>
                                                 <tr>
                                                     <th>No </th>
-                                                    <th>No Pendaftaran</th>
                                                     <th>Nama Tim</th>
                                                     <th>Email</th>
                                                     <th>Kategori</th>
                                                     <th>Nama Ketua</th>
-                                                    <th>Nama Anggota 1</th>
-                                                    <th>Nama Anggota 2</th>
+                                                    <th>Nama Anggota</th>
                                                     <th>Sekolah / Instansi</th>
                                                     <th>Tanggal Daftar</th>
                                                     <th>Status Pembayaran</th>
-                                                    <th>Judul File</th>
-                                                    <th>Link File</th>
-                                                    <th>Deskripsi File</th>
-                                                    <th>Kecepatan Internet </th>
                                                     <th>Aksi</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
-
-                                                @php $no = 1; $nol = 0; @endphp
+                                                @php $no = 1; @endphp
                                                 @foreach($list_baronas as $baronas)
-
-                                                @if($baronas->kategori == 'SD')
-                                                <?php $x = 1; ?>
-                                                @endif
-
-                                                @if($baronas->kategori == 'SMP')
-                                                <?php $x = 2; ?>
-                                                @endif
-
-                                                @if($baronas->kategori == 'SMA')
-                                                <?php $x = 3; ?>
-                                                @endif
-
-
-                                                @if($baronas->kategori == 'UMUM')
-                                                <?php $x = 4; ?>
-                                                @endif
-
                                                 <tr>
                                                     <td>{{ $no++ }}</td>
-                                                    <td><?= $nol . 1 . '-' . $nol . $nol . $x . '-' . $nol . $nol . $baronas->id?></td>
                                                     <td>{{ $baronas->nama_tim }}</td>
                                                     <td>{{ $baronas->email }}</td>
                                                     <td>{{ $baronas->kategori }}</td>
                                                     <td>{{ $baronas->nama_ketua }}</td>
                                                     <td>{{ $baronas->nama_anggota }}</td>
-                                                    <td>{{ $baronas->nama_anggotadua }}</td>
                                                     <td>{{ $baronas->sekolah }}</td>
                                                     <td>{{ $baronas->created_at }}</td>
 
+
+
+
                                                     <td>
 
-                                                        @if ($baronas->pembayaran_status == 0 && $baronas->kategori != 'UMUM')
+
+
+                                                        @if ($baronas->pembayaran_status == 0)
                                                         <span class="badge badge-pill badge-lg badge-secondary">Menunggu pembayaran</span>
                                                         @endif
 
-                                                        @if ($baronas->pembayaran_status == 1 && $baronas->kategori != 'UMUM')
+                                                        @if ($baronas->pembayaran_status == 1)
                                                         <span class="badge badge-pill badge-lg badge-warning">Belum dikonfirmasi</span>
                                                         @endif
 
-                                                        @if ($baronas->pembayaran_status == 2 && $baronas->kategori != 'UMUM')
+                                                        @if ($baronas->pembayaran_status == 2)
                                                         <span class="badge badge-pill badge-lg badge-success">LUNAS</span>
                                                         @endif
 
-                                                        @if ($baronas->kategori == 'UMUM')
-                                                        <span class="badge badge-pill badge-lg badge-primary">Tidak Bayar Karena Kategori Umum</span>
-                                                        @endif
+
+
+
+
 
                                                     </td>
 
-                                                    <td>{{ $baronas->judul_file }}</td>
-                                                    <td> <a href="<?= $baronas->link_file?>"><?= $baronas->link_file ?></a> </td>
-                                                    <td>{{ $baronas->deskripsi_file }}</td>
-                                                    <td> <img id="gambarBuktiPembayaran" style="width:100%;" src="{{ asset('$baronas->kecepatan_internet') }}"></td>
+
 
                                                     <td style="text-align: center">
 
@@ -127,22 +103,20 @@
                                                         <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#konfirmasi" onclick="konfirmasiModal({{ $baronas->id }}, '{{ $baronas->pembayaran_bukti }}');">
                                                             Konfirmasi
                                                         </button>
-
                                                         @endif
 
 
 
 
-                                                        @if ($baronas->upload_status == 0 && $baronas->kategori == 'UMUM')
                                                         <!-- Button trigger modal -->
-                                                        <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#konfirmasi" onclick="konfirmasiModal({{ $baronas->id }}, '{{ $baronas->pembayaran_bukti }}');"">
+                                                     <!-- <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#konfirmasi">
                                                             Konfirmasi
-                                                        </button>
-                                                        @endif
+                                                        </button> -->
 
 
 
-                                                         <!-- Modal -->
+
+                                                        <!-- Modal -->
                                                         <div class="modal fade" id="konfirmasi" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
@@ -158,10 +132,7 @@
                                                                         <h3 class="mt-3">Konfirmasi Peserta ?</h3>
                                                                     </div>
                                                                     <div class="modal-footer">
-                                                                        @if($baronas->kategori != 'UMUM')
                                                                         <img id="gambarBuktiPembayaran" style="width:100%;" src="">
-                                                                        @endif
-
                                                                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                                                                         <a id = "konfirmasiBtnFinal" class="btn btn-success" href ="">Konfirmasi !</a>
                                                                     </div>
@@ -169,21 +140,11 @@
                                                             </div>
                                                         </div>
 
-                                                        <!-- Button trigger modal -->
-                                                     <!-- <button type="button" class="btn btn-success btn-md" data-toggle="modal" data-target="#konfirmasi">
-                                                            Konfirmasi
-                                                        </button> -->
 
 
 
 
-
-
-
-
-
-
-                                                        <a type="button" href="{{ url('/admin/list/baronas/edit', $baronas->id) }}" id = "editBtnFinal" class="btn bg-primary btn-md" style="color: white;">Edit</a>
+                                                        <button type="button" href="#!" class="btn bg-primary btn-md" style="color: white;">Edit</button>
 
                                                         <!-- Button trigger modal -->
                                                         <button type="button" class="btn btn-danger btn-md" data-toggle="modal" data-target="#hapus" onclick="hapusModal({{ $baronas->id }});">
@@ -194,7 +155,7 @@
                                                             <div class="modal-dialog">
                                                                 <div class="modal-content">
                                                                     <div class="modal-header">
-                                                                        <h5 class="modal-title" id="staticBackdropLabel">Evolution 2021</h5>
+                                                                        <h5 class="modal-title" id="staticBackdropLabel">Evoulution 2021</h5>
                                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                             <span aria-hidden="true">&times;</span>
                                                                         </button>
@@ -211,7 +172,6 @@
                                                                 </div>
                                                             </div>
                                                         </div>
-
 
 
 
@@ -245,19 +205,9 @@
             document.getElementById("konfirmasiBtnFinal").href = "{{ url('/admin/list/baronas/konfirmasi') }}/" + mHref;
         }
 
-
-
         function hapusModal(mHref) {
             document.getElementById("hapusBtnFinal").href = "{{ url('/admin/list/baronas/delete') }}/" + mHref;
         }
-
-
-
-
-
-
-
-
     </script>
 
     @endsection

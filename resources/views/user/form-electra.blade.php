@@ -101,13 +101,13 @@
                                             <label for="exampleFormControlFile1">Unggah Kartu Pelajar/KTP/KK/Surat Pernyataan (Format
                                                 jpg, jpeg) *contoh surat pernyataan dapat diunduh di : <a href="https://intip.in/suratelectra" target="blank">intip.in/suratelectra</a>
                                                 <br> <br>
-                                                Kartu Identitas Ketua
+                                                Kartu Identitas Ketua (*Ukuran file maksikum 2MB)
                                             </label>
                                             <input name="file_ktp_ketua" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $electra['email']=='' ? '' : 'disabled' }} required>
                                         </div>
 
                                         <div class="form-group">
-                                            <label for="exampleFormControlFile1">Kartu Identitas Anggota</label>
+                                            <label for="exampleFormControlFile1">Kartu Identitas Anggota  (*Ukuran file maksikum 2MB)</label>
                                             <input name="file_ktp_anggota" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $electra['email']=='' ? '' : 'disabled' }} required>
                                         </div>
 

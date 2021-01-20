@@ -59,7 +59,7 @@
                                 </a>
                                 <div class="card-body">
                                     <h5 class="card-title" style="font-size: xx-large; text-align: center;">Kartu Peserta Electra</h5>
-                                    <a href="{{url('/user/kartu-peserta/unduh')}}" class="btn text-lighter" style="display:flex; justify-content: center; align-items: center; background-color: #264579;">Unduh Kartu Peserta</a>
+                                    <a href="{{url('/user/kartu-peserta-electra/unduh')}}" class="btn text-lighter" style="display:flex; justify-content: center; align-items: center; background-color: #264579;">Unduh Kartu Peserta</a>
                                 </div>
                             </div>
                         </div>

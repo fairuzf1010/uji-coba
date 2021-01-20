@@ -1,6 +1,6 @@
-@extends('layout/template-user')
+@extends('layout/template-admin')
 
-@section('title', 'Pendaftaran Baronas | Evolution 2021')
+@section('title', 'Edit Data Peserta Baronas | Evolution 2021')
 
 @section('container')
 
@@ -12,8 +12,8 @@
                 <div class="col-lg-6 col-7">
                     <nav aria-label="breadcrumb" class="d-none d-md-inline-block ">
                         <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
-                            <li class="breadcrumb-item"><a><i class="fas fa-home" style="color: #172B4D"></i></a></li>
-                            <li class="breadcrumb-item"><a style="color: #172B4D">Pendaftaran Baronas</a></li>
+                            <li class="breadcrumb-item"><a href="#"><i class="fas fa-home" style="color: #172B4D"></i></a></li>
+                            <li class="breadcrumb-item"><a href="#" style="color: #172B4D">Edit Peserta Baronas</a></li>
                         </ol>
                     </nav>
                 </div>
@@ -35,73 +35,29 @@
 
                     <div class="row">
                         <div class="col">
-
-                            @if ($baronas['pembayaran_status']==0 && $baronas['email'] != null)
-
-
-                            @if($baronas['kategori'] != 'UMUM')
-                            <div class="alert alert-success alert-block">
-                                Data pendaftaran telah tersimpan. Silahkan lakukan pembayaran pada menu pembayaran
-                            </div>
-
-
-                            @elseif($baronas['kategori'] == 'UMUM' && $baronas['upload_status'] == 0)
-                            <div class="alert alert-success alert-block">
-                                Data pendaftaran telah tersimpan. Tunggu Verifikasi Maksimal 2 x 24 Jam
-                            </div>
-
-
-                            @elseif($baronas['kategori'] == 'UMUM' && $baronas['upload_status'] == 3)
-                            <div class="alert alert-success alert-block">
-                              <b>Data pendaftaran telah tersimpan.</b>
-                            </div>
-                            @endif
-
-                            @endif
-
-                            @if ($baronas['pembayaran_status']==1)
-                            <div class="alert alert-success alert-block">
-                                Tim Anda telah berhasil terdaftar di <strong>BARONAS 2021</strong>
-                            </div>
-                            @endif
-
-
-
-                            @if ($baronas['upload_status']==1 && $baronas['kategori']=='UMUM')
-                            <div class="alert alert-success alert-block">
-                                Tim Anda telah berhasil terdaftar di <strong>BARONAS 2021</strong>
-                            </div>
-                            @endif
-
-
-                            <div class="alert alert-default" role="alert">
-                                <!-- 60.000 + 100 + 2 least unique ID -->
-                                <br>
-                                Untuk Speedtest atau Uji Kecepatan Internet bisa diujicobakan di <a href="https://www.speedtest.net/" style = "color:white;text-decoration:underline;">https://www.speedtest.net/</a>
-                                <br><br>
-                                Setelah itu hasilnya bisa discreenshot dan diupload di form pendaftaran di bawah ini
-                                <br><br>
-                                 <strong> PERINGATAN :
-                                    <ol>
-                                    <li> Panitia tidak akan bertanggung jawab terlebih lanjut apabila terdapat gangguan koneksi internet selama pertandingan pada peserta </li>
-                                    <li> PING ( Packet Internet Gopher ) Internet diupayakan lebih dari 50 ms untuk mengikuti lomba ini </li>
-                                    </ol>
-                                    </strong>
-                                <br>
-                            </div>
-
-                            <div class="card">
+                            <!-- DataTales Example -->
+                            <div class="card shadow mb-4">
                                 <div class="card-body">
-                                    <h6 class="heading text-muted mb-4">Pendaftaran Baronas</h6>
-                                    <form method="POST" enctype="multipart/form-data" action="{{ route('user.daftarBaronas') }}">
+
+
+                                    @if(Session::has('message'))
+                                    <div class="alert {{ Session::get('alert-class') }}">
+                                       {{ Session::get('message') }}
+                                    </div>
+                                    @endif
+
+
+                                    <form method="POST" enctype="multipart/form-data" action="{{ route('user.updateBaronas', $baronas->id) }}">
                                         @csrf
+
+                                        @method('PATCH')
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Nama Tim</label>
-                                            <input type="text" id="nama-tim" name = "nama_tim" class="form-control" placeholder="Nama Tim" value="{{ $baronas->nama_tim }}" maxlength="15" {{ $baronas['email']=='' ? '' : 'readOnly' }} >
+                                            <input type="text" id="nama-tim" name = "nama_tim" class="form-control" placeholder="{{ $baronas->nama_tim }}" value="{{ $baronas->nama_tim }}" maxlength="15" >
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Kategori</label>
-                                            <select name="kategori" id="kategori" class="form-control" {{ $baronas['email']=='' ? '' : 'disabled' }} required>
+                                            <select name="kategori" id="kategori" class="form-control" >
                                                 <option disabled selected value> -- Pilih Kategori -- </option>
                                                 <option value="SD">Sekolah Dasar</option>
                                                 <option value="SMP">Sekolah Menengah Pertama</option>
@@ -111,7 +67,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Nama Ketua</label>
-                                            <input type="text" id="nama-ketua" class="form-control" name = "nama_ketua"  placeholder="Nama Lengkap" value="{{ $baronas->nama_ketua }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
+                                            <input type="text" id="nama-ketua" class="form-control" name = "nama_ketua"  placeholder="{{ $baronas->nama_ketua }}" value="{{ $baronas->nama_ketua }}" >
                                         </div>
                                       <!--  <div class="form-group">
                                             <label class="form-control-label" for="input-name">Kelas ( <span class="red-star" style = "color:red">**</span> jika memilih kategori umum, tidak usah diisi <span class="red-star" style = "color:red">**</span>)</label>
@@ -124,13 +80,13 @@
                                         </div> -->
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Nama Anggota 1</label>
-                                            <input type="text" id="nama-anggota" name = "nama_anggota" class="form-control" placeholder="Nama Lengkap" value="{{ $baronas->nama_anggota }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} >
+                                            <input type="text" id="nama-anggota" name = "nama_anggota" class="form-control" placeholder="{{ $baronas->nama_anggota }}" value="{{ $baronas->nama_anggota }}"  >
                                         </div>
 
 
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Nama Anggota 2</label>
-                                            <input type="text" id="nama-anggotadua" name = "nama_anggotadua" class="form-control" placeholder="Nama Lengkap" value="{{ $baronas->nama_anggotadua }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} >
+                                            <input type="text" id="nama-anggotadua" name = "nama_anggotadua" class="form-control" placeholder="{{ $baronas->nama_anggotadua }}"  value="{{ $baronas->nama_anggotadua }}" >
                                         </div>
 
 
@@ -146,56 +102,27 @@
 
 
 
+
+
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Asal Sekolah / Instansi Ketua</label>
-                                            <input name="sekolah" type="text" name = "sekolah" id="sekolah" class="form-control" placeholder="Contoh : SMA Negeri 1 Surabaya" value="{{ $baronas->sekolah }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
+                                            <input name="sekolah" type="text" name = "sekolah" id="sekolah" class="form-control" placeholder="{{ $baronas->sekolah }}" value="{{ $baronas->sekolah }}" >
                                         </div>
 
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Alamat Sekolah / Instansi Ketua</label>
-                                            <input name="alamat_sekolah" type="text" id="alamat-sekolah" class="form-control" placeholder="Contoh : Jalan Wijaya Kusuma No. 48 Surabaya" value="{{ $baronas->alamat_sekolah }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
+                                            <input name="alamat_sekolah" type="text" id="alamat-sekolah" class="form-control" placeholder="{{ $baronas->alamat_sekolah }}" value="{{ $baronas->alamat_sekolah }}" >
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-name">Nama Pembina ( <span class="red-star" style = "color:red">**</span> Jika tidak ada pembina, tolong kasih " - " <span class="red-star" style = "color:red">**</span> )</label>
-                                            <input name="nama_pembina" type="text" name = "nama_pembina" id="Pembina" class="form-control" placeholder="Nama Lengkap" value="{{ $baronas->nama_pembina }}" {{ $baronas['email']=='' ? '' : 'readOnly' }}>
+                                            <input name="nama_pembina" type="text" name = "nama_pembina" id="Pembina" class="form-control" placeholder="{{ $baronas->nama_pembina }}" value="{{ $baronas->nama_pembina }}" >
                                         </div>
                                         <div class="form-group">
                                             <label class="form-control-label" for="input-phone">Nomor HP</label>
-                                            <input name="nomor_hp" type="number" id="nomor-hp" class="form-control" placeholder="Contoh : 08123456789" value="{{ $baronas->nomor_hp }}" {{ $baronas['email']=='' ? '' : 'readOnly' }} required>
+                                            <input name="nomor_hp" type="number" id="nomor-hp" class="form-control" placeholder="{{ $baronas->nomor_hp }}" value="{{ $baronas->nomor_hp }}" >
                                         </div>
 
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Unggah Kartu Pelajar/KTP/KK/Surat Pernyataan (Format
-                                                jpg, jpeg) *contoh surat pernyataan dapat diunduh di : <a href="https://intip.in/suratbaronas" target="blank">intip.in/suratbaronas</a>
-                                                <br> <br>
-                                                Kartu Identitas Ketua (*Ukuran file maksikum 2MB)
-                                            </label>
-                                            <input name="file_ktp_ketua" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $baronas['email']=='' ? '' : 'disabled' }} required>
-                                        </div>
-
-
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Unggah Kartu Identitas Anggota 1 (Format jpg, jpeg) ( <span class="red-star" style = "color:red">**</span> Jika tidak ada anggota, tolong upload kartu identitas ketua<span class="red-star" style = "color:red">**</span> )</label>
-                                            <input name="file_ktp_anggota" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $baronas['email']=='' ? '' : 'disabled' }} >
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Unggah Kartu Identitas Anggota 2 (Format jpg, jpeg) ( <span class="red-star" style = "color:red">**</span> Jika tidak ada anggota, tolong upload kartu identitas ketua<span class="red-star" style = "color:red">**</span> )    </label>
-                                            <input name="file_ktp_anggotadua" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $baronas['email']=='' ? '' : 'disabled' }}>
-                                        </div>
-
-
-                                        <div class="form-group">
-                                            <label for="exampleFormControlFile1">Unggah Screenshot Uji Kecepatan Internet (Format jpg, jpeg)</label>
-                                            <input name="kecepatan_internet" accept="image/jpeg" type="file" class="form-control-file" id="bukti-pendaftaran" {{ $baronas['email']=='' ? '' : 'disabled' }}>
-                                        </div>
-
-
-
-                                        <button type="submit" value="daftar" class="btn" style="color: white; width: 100%; background-color: #6EB648" {{ $baronas['email']=='' ? '' : 'disabled' }}>Daftar</button>
+                                        <button type="submit" value="daftar" class="btn" style="color: white; width: 100%; background-color: #6EB648" >Submit Hasil Edit</button>
 
 
 
@@ -244,14 +171,33 @@
                                         <hr class="my-4" />
                                     </form>
 
+
+
+
                                 </div>
                             </div>
 
+
                         </div>
                     </div>
+
+
                 </div>
             </div>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+        function konfirmasiModal(mHref, mSrc) {
+            // alert(mSrc);
+            document.getElementById("gambarBuktiPembayaran").src = "{{ url('/storage') }}/" + mSrc;
+            document.getElementById("konfirmasiBtnFinal").href = "{{ url('/admin/list/baronas/konfirmasi') }}/" + mHref;
+        }
+
+        function hapusModal(mHref) {
+            document.getElementById("hapusBtnFinal").href = "{{ url('/admin/list/baronas/delete') }}/" + mHref;
+        }
+    </script>
 
     @endsection

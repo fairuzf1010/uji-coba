@@ -39,10 +39,6 @@ class CreateBaronasTable extends Migration
 
 
 
-
-
-
-
         Schema::create('baronas', function (Blueprint $table) {
             $table->id();
             $table->string('no_pendaftaran')->nullable();
@@ -51,19 +47,25 @@ class CreateBaronasTable extends Migration
             $table->string('kategori');
             $table->string('nama_ketua');
            // $table->string('kelas_ketua')->nullable();
-            $table->string('nama_anggota');
+            $table->string('nama_anggota')->nullable();
+            $table->string('nama_anggotadua')->nullable();
            // $table->string('kelas_anggota')->nullable();
             $table->string('sekolah');
             $table->string('alamat_sekolah');
             $table->string('nama_pembina')->nullable();
             $table->string('nomor_hp');
-            $table->string('region')->nullable();
+            $table->string('kecepatan_internet')->nullable();
             $table->string('pembayaran_bank')->nullable();
             $table->string('pembayaran_atas_nama')->nullable();
+            $table->integer('upload_status')->nullable();
             $table->integer('pembayaran_status');
             $table->string('pembayaran_bukti')->nullable();
+            $table->string('judul_file')->nullable();
+            $table->string('deskripsi_file')->nullable();
+            $table->string('link_file')->nullable();
             $table->string('file_ktp_ketua')->nullable();
             $table->string('file_ktp_anggota')->nullable();
+            $table->string('file_ktp_anggotadua')->nullable();
             $table->timestamps();
         });
     }

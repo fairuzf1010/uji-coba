@@ -152,7 +152,7 @@
                                     </a>
                                 </div>
                                 <div class="list-group list-group-flush">
-                                    <a href="#" class="list-group-item list-group-item-action">
+                                    <a href="{{url('/admin/export/baronas')}}" class="list-group-item list-group-item-action">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                             </div>
@@ -282,7 +282,17 @@
     <script src="/vendor/datatables/jquery.dataTables.js"></script>
     <script src="/vendor/datatables/dataTables.bootstrap4.min.js"></script>
     <!-- Page level custom scripts -->
-    <script src="/js/demo/datatables-demo.js"></script>
+    <!-- <script src="/js/demo/datatables-demo.js"></script> -->
+
+    <script>
+        // Call the dataTables jQuery plugin
+        $(document).ready(function() {
+        // $('#dataTable').DataTable();
+        $('#dataTable').DataTable( {
+            "aaSortingFixed": [[4,'asc']]
+        } );
+        });
+    </script>
 
 
 </body>

@@ -34,12 +34,16 @@
 
 <body>
     <div class="page1">
-        <img class="" src="img/dokumen/template.png" alt="" style="width: 510px; top: 0; left: 0;position: absolute; z-index: -99">
-        <p style="position: absolute; z-index: 99; top: 183px; left: 60px; font-size: 25px; font-family: poppinsbold, sans-serif">{{$nomor_peserta}}</p>
-        <p style="position: absolute; z-index: 99; top: 255px; left: 60px; font-size: 25px; font-family: poppinsbold, sans-serif">{{$nama_tim}}</p>
-        <p style="position: absolute; z-index: 99; top: 332px; left: 60px; font-size: 25px; font-family: poppinsbold, sans-serif">{{$nama_ketua}}</p>
-        <p style="position: absolute; z-index: 99; top: 404px; left: 60px; font-size: 25px; font-family: poppinsbold, sans-serif">{{$nama_anggota}}</p>
-        <p style="position: absolute; z-index: 99; top: 477px; left: 60px; font-size: 25px; font-family: poppinsbold, sans-serif">{{$sekolah}}</p>
+        <img class="" src="img/dokumen/nametag.jpeg" alt="" style="width: 510px; top: 0; left: 0;position: absolute; z-index: -99">
+
+        <p style="position: absolute; z-index: 99; top: 432px; left: 100px; font-size: 23px; font-family: poppinsbold, sans-serif"></p>
+        <!-- <p style="position: absolute; z-index: 99; top: 445px; left: 100px; font-size: 23px; font-family: poppinsbold, sans-serif">2. Nama Anggota</p> -->
+
+        <p style="position: absolute; z-index: 99; top: 550px; left: 210px; font-size: 23px; font-family: poppinsbold, sans-serif">{{$kategori}}</p>
+
+        <p style="color: white; position: absolute; z-index: 99; top: 640px; left: 56px; font-size: 13px; font-family: poppinsbold, sans-serif">Nama Sponsor</p>
+        <p style="color: white; position: absolute; z-index: 99; top: 640px; left: 260px; font-size: 13px; font-family: poppinsbold, sans-serif">Nama Media Partner</p>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>

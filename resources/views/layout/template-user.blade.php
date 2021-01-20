@@ -64,8 +64,10 @@
                                         </div>
                                     </a>
                                 </div>
+
+
                                 <div class="list-group list-group-flush">
-                                    <a href="{{url('/user/daftar/baronasdua')}}" class="list-group-item list-group-item-action">
+                                    <a href="{{url('/user/daftar/baronas')}}" class="list-group-item list-group-item-action">
                                         <div class="row align-items-center">
                                             <div class="col-auto">
                                             </div>
@@ -89,22 +91,187 @@
                             </div>
                         </li>
 
+
+
+
+
+
+
+         <!-- Divider -->
+         <hr class="my-2" style = "display:none;" >
+         <li class="nav-item dropdown" style = "display:none;" >
+             <a style="font-size: 18px; text-align: center;" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 <i class="fas fa-link" style="font-size: 20px;"></i>
+                 <span class="nav-link-text ml-2" style = "font-size:15px;">Upload Link Baronas</span>
+             </a>
+             <div class="dropdown-menu  dropdown-menu-right">
+                 <!-- List group -->
+                 <div class="list-group list-group-flush">
+                     <a href="{{url('/user/upload-link-baronas/sd')}}" class="list-group-item list-group-item-action">
+                         <div class="row align-items-center">
+                             <div class="col-auto">
+                             </div>
+                             <div class="col ml--2">
+                                 <h4 class="mb-0 text-sm">SD</h4>
+                             </div>
+                         </div>
+                     </a>
+                 </div>
+                 <div class="list-group list-group-flush">
+                     <a href="{{url('/user/daftar/baronas')}}" class="list-group-item list-group-item-action">
+                         <div class="row align-items-center">
+                             <div class="col-auto">
+                             </div>
+                             <div class="col ml--2">
+                                 <h4 class="mb-0 text-sm">SMP</h4>
+                             </div>
+                         </div>
+                     </a>
+                 </div>
+                 <div class="list-group list-group-flush">
+                    <a href="{{url('/user/daftar/baronas')}}" class="list-group-item list-group-item-action">
+                        <div class="row align-items-center">
+                            <div class="col-auto">
+                            </div>
+                            <div class="col ml--2">
+                                <h4 class="mb-0 text-sm">SMA</h4>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                 <div class="list-group list-group-flush">
+                     <a href="{{url('/user/daftar/baronas')}}" class="list-group-item list-group-item-action">
+                         <div class="row align-items-center">
+                             <div class="col-auto">
+                             </div>
+                             <div class="col ml--2">
+                                 <h4 class="mb-0 text-sm">UMUM</h4>
+                             </div>
+                         </div>
+                     </a>
+                 </div>
+             </div>
+         </li>
+
+
                         <!-- Divider -->
                         <hr class="my-2">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{url('/user/pembayaran')}}" style="font-size: 18px; text-align: center">
-                                <i class="fas fa-money-bill-wave" style="font-size: 20px;"></i>
-                                <span class="nav-link-text ml-2">Pembayaran</span>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="{{url('/user/upload-link-baronas')}}" style="font-size: 18px; text-align: center">
+                                <i class="fa fa-link" style="font-size: 20px;"></i>
+                                <span class="nav-link-text ml-2" style="font-size: 16px;">Upload Link Baronas</span>
                             </a>
                         </li>
+
+
                         <!-- Divider -->
+                        <hr class="my-2">
+                        <li class="nav-item dropdown">
+                            <a style="font-size: 18px; text-align: center" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-money-bill-wave" style="font-size: 20px;"></i>
+                                <span class="nav-link-text ml-2"> Pembayaran</span>
+                            </a>
+                            <div class="dropdown-menu  dropdown-menu-right">
+                                <!-- List group -->
+                                <div class="list-group list-group-flush">
+                                    <a href="{{url('/user/pembayaran-electra')}}" class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h4 class="mb-0 text-sm">Electra</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <a href="{{url('/user/pembayaran-baronas')}}" class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h4 class="mb-0 text-sm">Baronas</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <a href="{{url('/user/pembayaran-evolve')}}" class="list-group-item list-group-item-action disabled">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h4 class="mb-0 text-sm">Evolve</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </li>
+
+
+                        <!-- Divider Cetak Kartu Peserta Single
                         <hr class="my-2">
                         <li class="nav-item">
                             <a class="nav-link" href="{{url('/user/kartu-peserta')}}" style="font-size: 18px; text-align: center">
                                 <i class="fas fa-id-card" style="font-size: 20px;"></i>
                                 <span class="nav-link-text">Cetak Kartu Peserta</span>
                             </a>
+                        </li> -->
+
+
+
+
+                        <!-- Divider -->
+                        <hr class="my-2">
+                        <li class="nav-item dropdown">
+                            <a style="font-size: 18px; text-align: center" class="nav-link" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="fas fa-money-bill-wave" style="font-size: 20px;"></i>
+                                <span class="nav-link-text">Cetak Kartu Peserta</span>
+                            </a>
+                            <div class="dropdown-menu  dropdown-menu-right">
+                                <!-- List group -->
+                                <div class="list-group list-group-flush">
+                                    <a href="{{url('/user/kartu-peserta-electra')}}" class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h4 class="mb-0 text-sm">Electra</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <a href="{{url('/user/kartu-peserta-baronas')}}" class="list-group-item list-group-item-action">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h4 class="mb-0 text-sm">Baronas</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="list-group list-group-flush">
+                                    <a href="{{url('/user/kartu-peserta-evolve')}}" class="list-group-item list-group-item-action disabled">
+                                        <div class="row align-items-center">
+                                            <div class="col-auto">
+                                            </div>
+                                            <div class="col ml--2">
+                                                <h4 class="mb-0 text-sm">Evolve</h4>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
                         </li>
+
+
+
+
+
+
                     </ul>
                     <!-- Divider -->
                     <hr class="my-3">
