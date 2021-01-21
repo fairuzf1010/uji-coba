@@ -97,7 +97,7 @@
                                 </a>
                                 <div class="card-body">
                                     <h5 class="card-title" style="font-size: xx-large; text-align: center;">Nametag Robot Baronas</h5>
-                                    <a href="{{url('/user/kartu-peserta-baronas/unduh')}}" class="btn text-lighter" style="display:flex; justify-content: center; align-items: center; background-color: #264579;">Unduh Nametag Robot</a>
+                                    <a href="{{url('/user/kartu-peserta-baronas/unduh-nametag-robot')}}" class="btn text-lighter" style="display:flex; justify-content: center; align-items: center; background-color: #264579;">Unduh Nametag Robot</a>
                                 </div>
                             </div>
                         </div>

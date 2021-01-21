@@ -589,6 +589,7 @@ class UserController extends Controller
 
 
         $data = array(
+            'id' => $baronas->id,
             'nama_ketua' => $baronas->nama_ketua,
             'nama_anggota' => $baronas->nama_anggota,
             'nama_anggotadua' => $baronas->nama_anggotadua,
@@ -598,7 +599,7 @@ class UserController extends Controller
             'sekolah' => $baronas->sekolah,
         );
 
-        $pdf = \PDF::loadView('dokumen.nametag-robot-baronas', $data)->setPaper('a5', 'potrait');
+        $pdf = \PDF::loadView('dokumen.nametag-robot-baronas', $data);
         return $pdf->download('nametag-baronas.pdf');
     }
 

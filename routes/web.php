@@ -141,7 +141,7 @@ Route::group(['middleware' => 'CheckLogin'], function () {
     Route::get('/user/kartu-peserta-baronas', 'UserController@kartuPesertaBaronas');
 
     Route::get('/user/kartu-peserta-baronas/unduh', 'UserController@unduhKartuBaronas');
-
+    Route::get('/user/kartu-peserta-baronas/unduh-nametag-robot', 'UserController@unduhNametagBaronas');
 
 
     Route::get('/reka', function () {

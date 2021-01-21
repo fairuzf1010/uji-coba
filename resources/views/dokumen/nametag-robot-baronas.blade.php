@@ -24,12 +24,13 @@
 
 
         @page {
-            margin: 50px 25px 0 25px;
+            margin: 0 0 0 0;
+            size: 370pt 370pt;
         }
 
         .page2,
         .page3,
-            {
+        .page4 {
             page-break-before: always;
         }
     </style>
@@ -38,28 +39,30 @@
 <body>
 
 
-
-        <img class="" src="img/dokumen/nametag.jpeg" alt="" style="width: 510px; top: 0; left: 0;position: absolute; z-index: -99">
+    <div class="page1">
+        <img class="" src="img/dokumen/nametag_robot.jpeg" alt="" style="width: 510px; top: 0; left: 0;position: absolute; z-index: -99">
 
         <!-- <p style="position: absolute; z-index: 99; top: 445px; left: 100px; font-size: 23px; font-family: poppinsbold, sans-serif">2. Nama Anggota</p> -->
         @if($kategori =='SD')
-        <p style="position: absolute; z-index: 99; top: 550px; left: 238px; font-size: 23px; font-family: poppinsbold, sans-serif">SD</p>
-        @endif
+        <p style="position: absolute; z-index: 99; top: 365px; left: 218px; font-size: 23px; font-family: poppinsbold, sans-serif">SD_00{{$id}}_<?php Str::substr($nomor_hp, 9) ?></p>
 
-        @if($kategori =='SMP')
-        <p style="position: absolute; z-index: 99; top: 550px; left: 228px; font-size: 23px; font-family: poppinsbold, sans-serif">SMP</p>
-        @endif
 
-        @if($kategori =='SMA')
-        <p style="position: absolute; z-index: 99; top: 550px; left: 228px; font-size: 23px; font-family: poppinsbold, sans-serif">SMA</p>
-        @endif
+        @elseif($kategori =='SMP')
+        <p style="position: absolute; z-index: 99; top: 365px; left: 208px; font-size: 23px; font-family: poppinsbold, sans-serif">SMP_00{{$id}}_<?php Str::substr($nomor_hp, 9) ?></p>
 
-        @if($kategori =='UMUM')
-        <p style="position: absolute; z-index: 99; top: 550px; left: 222px; font-size: 23px; font-family: poppinsbold, sans-serif">Umum</p>
+
+        @elseif($kategori =='SMA')
+        <p style="position: absolute; z-index: 99; top: 365px; left: 208px; font-size: 23px; font-family: poppinsbold, sans-serif">SMA_00{{$id}}_<?php Str::substr($nomor_hp, 9) ?></p>
+
+
+        @elseif($kategori =='UMUM')
+        <p style="position: absolute; z-index: 99; top: 365px; left: 202px; font-size: 23px; font-family: poppinsbold, sans-serif">Umum_00{{$id}}_<?php Str::substr($nomor_hp, 9) ?></p>
         @endif
 
         <p style="color: white; position: absolute; z-index: 99; top: 640px; left: 56px; font-size: 13px; font-family: poppinsbold, sans-serif">Nama Sponsor</p>
         <p style="color: white; position: absolute; z-index: 99; top: 640px; left: 260px; font-size: 13px; font-family: poppinsbold, sans-serif">Nama Media Partner</p>
+
+    </div>
 
 
 
